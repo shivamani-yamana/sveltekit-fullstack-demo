@@ -1,4 +1,4 @@
-//import NeucronSdk from 'neucron-sdk'
+import NeucronSdk from 'neucron-sdk'
 
 /** @type {import('./$types').Actions} */
 export const actions = {
@@ -6,7 +6,7 @@ export const actions = {
     login: async ({ request }) => {
         const data = await request.formData()
 
-        /*
+
         const neucron = new NeucronSdk()
         const authModule = neucron.authentication
 
@@ -18,10 +18,10 @@ export const actions = {
 
         console.log(walletBalance.data.balance.summary)
 
-        */
+
         return ({
             success: true,
-            balance: 10//walletBalance.data.balance.summary
+            balance: walletBalance.data.balance.summary
         })
 
     },
@@ -29,7 +29,7 @@ export const actions = {
     pay: async ({ request }) => {
 
         const data = await request.formData()
-        /*
+
         const neucron = new NeucronSdk()
         const authModule = neucron.authentication
         const loginResponse = await authModule.login({ email: data.get('email'), password: data.get('password') })
@@ -46,7 +46,7 @@ export const actions = {
         console.log(options)
         const payResponse = await neucron.pay.txSpend(options)
         console.log(payResponse)
-        */
+
         return ({
             success: true,
             payment: true
