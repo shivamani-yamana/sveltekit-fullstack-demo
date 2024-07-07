@@ -29,6 +29,7 @@
           type="text"
           placeholder="Enter name"
           name="name"
+          required
         />
       </div>
       <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -44,6 +45,7 @@
           type="text"
           placeholder="Enter email"
           name="email"
+          required
         />
       </div>
       <!-- <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -53,7 +55,7 @@
           </div> -->
       <button
         type="submit"
-        class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 rounded "
+        class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 rounded"
       >
         Create Applicant
       </button>
