@@ -8,7 +8,7 @@ const provider = new DefaultProvider({
 });
 const signer = new NeucronSigner(provider);
 
-await signer.login("sales@timechainlabs.io", "string");
+
 await Root.loadArtifact();
 let instance
 
@@ -17,6 +17,7 @@ export const actions = {
   deploy: async ({ request }) => {
 
     const data = await request.formData();
+    await signer.login(data.get('email'),data.get('password'));
     
     const square = BigInt(data.get("square"));
     instance = new Root(square);
@@ -35,6 +36,7 @@ export const actions = {
   unlock: async ({request})=>{
 
     const data = await request.formData()
+    await signer.login(data.get('email'),data.get('password'));
     
     const root = BigInt(data.get('root'))
 

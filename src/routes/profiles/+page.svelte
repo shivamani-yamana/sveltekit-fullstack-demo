@@ -67,3 +67,4 @@
     <p class="pt-2">Added new Applicant!</p>
   {/if}
 </div>
+<div class="h-32"></div>
