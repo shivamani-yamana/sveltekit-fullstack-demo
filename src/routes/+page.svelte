@@ -33,7 +33,7 @@
       <span class="text-slate-200">This project is developed with</span>
       <span>
         <ul
-          class="flex gap-x-7 items-center justify-center font-mono text-base p-2"
+          class="flex gap-x-7 items-center justify-center font-mono text-base p-2 text-slate-500"
         >
           <li>Sveltekit</li>
           <li>TailwindCSS</li>

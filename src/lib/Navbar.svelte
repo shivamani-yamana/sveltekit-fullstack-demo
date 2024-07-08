@@ -93,7 +93,7 @@
 
 <style>
   .mine {
-    background-image: url("mylogo_white.png");
+    background-image: url(mylogo_white.png);
     background-size: 80%;
     background-position: center;
   }
