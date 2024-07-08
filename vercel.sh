@@ -1,0 +1,1 @@
+npx scrypt-cli@latest compile
