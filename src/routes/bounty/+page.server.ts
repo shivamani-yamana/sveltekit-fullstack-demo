@@ -2,6 +2,7 @@
 import { Root } from "$lib/contracts/root.js";
 import { DefaultProvider, sha256, bsv, toByteString } from "scrypt-ts";
 import { NeucronSigner } from "neucron-signer";
+import artifact from '../../../artifacts/src/lib/contracts/root.json'
 
 const provider = new DefaultProvider({
   network: bsv.Networks.mainnet,
@@ -9,7 +10,7 @@ const provider = new DefaultProvider({
 const signer = new NeucronSigner(provider);
 
 
-await Root.loadArtifact();
+await Root.loadArtifact(artifact);
 let instance
 
 /** @type {import('./$types').Actions} */
