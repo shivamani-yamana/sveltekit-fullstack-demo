@@ -1,5 +1,6 @@
 <script>
   export let form;
+  let last = 0;
 </script>
 
 <div
@@ -42,13 +43,20 @@
       <button
         type="submit"
         class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-6 rounded"
+        on:click={() => {
+          last = 0;
+        }}
       >
         Login
       </button>
     </div>
   </form>
-  {#if form?.success}
-    <p class="pt-2">Login Successful! Your Wallet Balance is {form?.balance}</p>
+  {#if last == 0}
+    {#if form?.success}
+      <p class="pt-2">
+        Login Successful! Your Wallet Balance is {form?.balance}
+      </p>
+    {/if}
   {/if}
 </div>
 
@@ -124,16 +132,22 @@
       <button
         type="submit"
         class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-6 rounded"
+        on:click={() => {
+          last = 1;
+        }}
       >
         Pay
       </button>
     </div>
   </form>
-  {#if form?.success}
-    <p class="pt-2">
-      Your payment was successfull and Here's your <a href={form?.payment}
-        >transaction</a
-      >
-    </p>
+  {#if last == 1}
+    {#if form?.success}
+      <p class="pt-2">
+        Your payment was successfull and Here's your <a
+          href="https://whatsonchain.com/tx/{form?.payment}"
+          class="text-blue-500">transaction</a
+        >
+      </p>
+    {/if}
   {/if}
 </div>

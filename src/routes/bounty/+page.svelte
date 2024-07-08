@@ -1,5 +1,6 @@
 <script lang="ts">
   export let form;
+  let last = 0;
 </script>
 
 <div
@@ -47,15 +48,30 @@
       <button
         type="submit"
         class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 rounded"
+        on:click={() => {
+          last = 0;
+        }}
       >
         Deploy Bounty
       </button>
     </div>
   </form>
-  {#if form?.success}
-    <!-- this message is ephemeral; it exists because the page was rendered in
-		   response to a form submission. it will vanish if the user reloads -->
-    <p class="pt-2">Bounty was deployed successfully transaction link</p>
+  {#if last == 0}
+    {#if form?.success}
+      <!-- this message is ephemeral; it exists because the page was rendered in
+  response to a form submission. it will vanish if the user reloads -->
+      <p class="pt-2">
+        Bounty was deployed successfully
+
+        <a
+          href="http://whatsonchain.com/tx/{form?.tx}"
+          class="text-blue-500"
+          target="_blank"
+        >
+          transaction link</a
+        >
+      </p>
+    {/if}
   {/if}
 </div>
 <div
@@ -82,14 +98,26 @@
       <button
         type="submit"
         class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 rounded"
+        on:click={() => {
+          last = 1;
+        }}
       >
         Unlock Bounty
       </button>
     </div>
   </form>
-  {#if form?.success}
-    <!-- this message is ephemeral; it exists because the page was rendered in
+  {#if last == 1}
+    {#if form?.success}
+      <!-- this message is ephemeral; it exists because the page was rendered in
 		   response to a form submission. it will vanish if the user reloads -->
-    <p class="pt-2">Bounty was unlocked successfully transaction link</p>
+      <p class="pt-2">
+        Bounty was unlocked successfully
+        <a
+          href="http://whatsonchain.com/tx/{form?.tx}"
+          target="_blank"
+          class="text-blue-500">transaction link</a
+        >
+      </p>
+    {/if}
   {/if}
 </div>

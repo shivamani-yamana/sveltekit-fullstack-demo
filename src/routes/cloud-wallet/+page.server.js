@@ -36,20 +36,22 @@ export const actions = {
 
         console.log(loginResponse)
 
-
         const options = {
-            address: data.get('paymail'),
-            note: 'Nemo 3d',
-            amount: data.get('amount')
+            outputs: [{
+
+                address: data.get('paymail'),
+                note: 'Nemo 3d',
+                amount: Number(data.get('amount'))
+            }]
         }
 
         console.log(options)
         const payResponse = await neucron.pay.txSpend(options)
-        console.log(payResponse)
+        console.log(payResponse.data.txid)
 
         return ({
             success: true,
-            payment: true
+            payment: payResponse.data.txid
         })
     }
 

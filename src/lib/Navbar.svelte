@@ -9,7 +9,7 @@
         alt="TSoC Logo"
       />
       <span class="self-center text-2xl font-semibold whitespace-nowrap"
-        >TSoC Fullstack Application</span
+        >TSoC Fullstack Application Project</span
       >
     </a>
     <button
@@ -77,5 +77,6 @@
         </li>
       </ul>
     </div>
+    <div class="mine">Hello</div>
   </div>
 </nav>
