@@ -32,10 +32,18 @@
     >Create Wallet</button
   >
   {#if walletCreated}
-    <p>Wallet Private key is {WIF}</p>
-    <p>Your Bitcoin Address is {address}</p>
+    <div class="w-full flex flex-col items-center justify-center gap-2">
+      <div class="privatekey flex w-full justify-center text-center">
+        <p>Wallet Private key :</p>
+        <input type="text" value={WIF} class="px-4 w-8/12 mx-2" />
+      </div>
+      <div class="btcadd flex w-full justify-center text-center">
+        <p>Your Bitcoin Address :</p>
+        <input type="text" value={address} class="px-4 w-8/12 mx-2" />
+      </div>
+    </div>
   {/if}
   {#if showDetails}
-    <p>Wallet Created</p>
+    <p class="text-green-400">Wallet Created</p>
   {/if}
 </div>

@@ -1,16 +1,17 @@
 <script lang="ts">
+  import { enhance } from "$app/forms";
   export let form;
+
+  let btn_switch = 0;
   let last = 0;
 </script>
 
-<div class="bounty-page">
-  <div
-    class=" pt-6 w-screen max-w-screen-lg p-12 mx-auto rounded-lg shadow-xl dark:bg-white/10 bg-white/30 ring-1 ring-gray-900/5 backdrop-blur-lg"
-  >
-    <form method="POST" action="?/deploy">
+<div class="bounty-page flex w-screen justify-center gap-40 mt-10">
+  <div class="">
+    <form method="POST" action="?/deploy" use:enhance>
       <h1 class="font-bold text-lg">Deploy A Bounty</h1>
-      <div class="flex flex-wrap -mx-3 mb-2 w-12/12 justify-evenly">
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <div class="">
+        <div class="">
           <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-city"
@@ -26,7 +27,7 @@
             required
           />
         </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div class="">
           <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-city"
@@ -43,7 +44,7 @@
           />
         </div>
         <br />
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div class="">
           <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-city"
@@ -59,7 +60,7 @@
             required
           />
         </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div class="">
           <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-city"
@@ -82,40 +83,36 @@
   </div> -->
         <button
           type="submit"
-          class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 rounded"
+          class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 rounded w-40 h-10"
           on:click={() => {
-            last = 0;
+            btn_switch = 0;
           }}
         >
           Deploy Bounty
         </button>
       </div>
     </form>
-    {#if last == 0}
-      {#if form?.success}
-        <!-- this message is ephemeral; it exists because the page was rendered in
+    {#if form?.success && btn_switch == 0}
+      <!-- this message is ephemeral; it exists because the page was rendered in
 response to a form submission. it will vanish if the user reloads -->
-        <p class="pt-2">
-          Bounty was deployed successfully
+      <p class="pt-2">
+        Bounty was deployed successfully
 
-          <a
-            href="http://whatsonchain.com/tx/{form?.tx}"
-            class="text-blue-500"
-            target="_blank"
-          >
-            transaction link</a
-          >
-        </p>
-      {/if}
+        <a
+          href="http://whatsonchain.com/tx/{form?.tx}"
+          class="text-blue-500"
+          target="_blank"
+        >
+          transaction link</a
+        >
+      </p>
     {/if}
   </div>
-  <div
-    class="mt-4 pt-10 w-screen max-w-screen-lg p-12 mx-auto rounded-lg shadow-xl dark:bg-white/10 bg-white/30 ring-1 ring-gray-900/5 backdrop-blur-lg"
-  >
-    <form method="POST" action="?/unlock">
+  <div class="">
+    <form method="POST" action="?/unlock" use:enhance>
       <h1 class="font-bold text-lg">Unlock This Bounty</h1>
-      <div class="flex flex-wrap -mx-3 mb-2 w-12/12 justify-evenly">
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <div class="">
+        <div class="">
           <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-city"
@@ -131,7 +128,7 @@ response to a form submission. it will vanish if the user reloads -->
             required
           />
         </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div class="">
           <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-city"
@@ -147,7 +144,7 @@ response to a form submission. it will vanish if the user reloads -->
             required
           />
         </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div class="">
           <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="grid-city"
@@ -165,33 +162,26 @@ response to a form submission. it will vanish if the user reloads -->
         </div>
         <button
           type="submit"
-          class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 rounded"
+          class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 rounded w-40 h-10"
           on:click={() => {
-            last = 1;
+            btn_switch = 1;
           }}
         >
           Unlock Bounty
         </button>
       </div>
     </form>
-    {#if last == 1}
-      {#if form?.success}
-        <!-- this message is ephemeral; it exists because the page was rendered in
+    {#if form?.success && btn_switch == 1}
+      <!-- this message is ephemeral; it exists because the page was rendered in
 response to a form submission. it will vanish if the user reloads -->
-        <p class="pt-2">
-          Bounty was unlocked successfully
-          <a
-            href="http://whatsonchain.com/tx/{form?.tx}"
-            target="_blank"
-            class="text-blue-500">transaction link</a
-          >
-        </p>
-      {/if}
+      <p class="pt-2">
+        Bounty was unlocked successfully
+        <a
+          href="http://whatsonchain.com/tx/{form?.success}"
+          target="_blank"
+          class="text-blue-500">transaction link</a
+        >
+      </p>
     {/if}
   </div>
-
-  <div class="h-32"></div>
 </div>
-
-<style>
-</style>
