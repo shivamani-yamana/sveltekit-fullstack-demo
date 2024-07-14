@@ -3,7 +3,6 @@
 
   /** @type {import('./$types').PageData} */
   export let data;
-  console.log("hello", data.names);
 
   /** @type {import('./$types').ActionData} */
   export let form;
@@ -11,9 +10,7 @@
 
 <Table names={data.names} />
 
-<div
-  class="mt-10 pt-10 w-full max-w-xl p-12 mx-auto rounded-lg shadow-xl dark:bg-white/10 bg-white/30 ring-1 ring-gray-900/5 backdrop-blur-lg"
->
+<div class="w-6/12 mx-auto mt-10 bg-slate-50 z-10 px-10 pt-4 rounded-3xl">
   <form method="POST" action="?/create">
     <div class="flex flex-wrap -mx-3 mb-2">
       <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
